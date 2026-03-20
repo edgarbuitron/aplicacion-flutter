@@ -1,0 +1,35 @@
+name: Compilar App para Windows
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Esto nos permite darle al botón de "Play" manualmente
+
+jobs:
+  build:
+    name: Construir Windows Exe
+    runs-on: windows-latest # ¡Aquí pedimos la PC con Windows prestada!
+
+    steps:
+      - name: 1. Descargar tu código
+        uses: actions/checkout@v4
+
+      - name: 2. Instalar Flutter en la máquina virtual
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: 3. Asegurar que existan los archivos de Windows
+        run: flutter create --platforms=windows .
+
+      - name: 4. Descargar dependencias
+        run: flutter pub get
+
+      - name: 5. Compilar el archivo .exe
+        run: flutter build windows --release
+
+      - name: 6. Guardar el instalable para descargarlo
+        uses: actions/upload-artifact@v4
+        with:
+          name: MiApp-Windows
+          path: build\windows\x64\runner\Release\
