@@ -17,14 +17,14 @@ class MyAppBar extends StatelessWidget {
         children: [
           const IconButton(
             icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu', // <-- Comillas simples corregidas aquí
+            tooltip: 'Navigation menu',
             onPressed: null, // null deshabilita el botón
           ),
           // Expanded expande su hijo para llenar el espacio disponible.
           Expanded(child: title),
           const IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Search', // <-- Comillas simples corregidas aquí
+            tooltip: 'Search',
             onPressed: null,
           ),
         ],
@@ -45,14 +45,13 @@ class MyScaffold extends StatelessWidget {
         children: [
           MyAppBar(
             title: Text(
-              'Example title', // <-- Comillas simples corregidas aquí
+              'Example title',
               style: Theme.of(context).primaryTextTheme.titleLarge,
             ),
           ),
           const Expanded(
             child: Center(
-              child:
-                  Text('Hello, world!'), // <-- Comillas simples corregidas aquí
+              child: Text('Hello, world!'),
             ),
           ),
         ],
@@ -64,10 +63,9 @@ class MyScaffold extends StatelessWidget {
 void main() {
   runApp(
     const MaterialApp(
-      title: 'My app', // <-- Comillas simples corregidas aquí
+      title: 'My app',
       home: SafeArea(child: MyScaffold()),
-      debugShowCheckedModeBanner:
-          false, // Opcional: quita la etiqueta de "DEBUG"
+      debugShowCheckedModeBanner: false, 
     ),
   );
 }
