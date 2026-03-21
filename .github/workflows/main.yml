@@ -17,11 +17,13 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Descargar paquetes de Firebase
+      - name: Habilitar soporte Web
+        run: flutter create . --platforms web
+
+      - name: Descargar paquetes
         run: flutter pub get
 
       - name: Construir la PWA Web
-        # Este comando ajusta la ruta automáticamente para que funcione en GitHub Pages
         run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
 
       - name: Subir a Internet
